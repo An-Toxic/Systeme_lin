@@ -378,6 +378,20 @@ public class Matrice
            ResGauss res = new ResGauss(this.nbrLig-1 ,r); 
         return res ;
     }
+    public double determinant(){
+        double det= 1 ;
+        if(this.nbrCol==this.nbrLig){
+            this.descenteGauss();
+            for (int i = 0; i < this.nbrLig; i++) {
+                det = this.coeffs[i][i]*det ;
+            }
+            return det*this.descenteGauss().sigPerm ;
+        }
+        else {
+            throw new Error ("matrice non carree ");
+        }
+    }
+   
 }
     
 
