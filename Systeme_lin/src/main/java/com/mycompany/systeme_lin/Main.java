@@ -34,17 +34,30 @@ public class Main {
        System.out.println(m.toString());
 */
       
-    Matrice m=Matrice.matTest1(3);
-    System.out.println(m.determinant());
-    Matrice n = Matrice.matTest2(3);
-        System.out.println(n.determinant());
-     
-      
+    Matrice m=Matrice.matTest2(3);
     
     
-  
+    double[] tab = {1,2,3};
+    Matrice v = Matrice.creeVecteur(tab);
+    Matrice n =m.concatCol(v);
+    System.out.println(n.toString());
     
+    //n.descenteGauss();
+    
+   System.out.println(n.toString());
+   //System.out.println(n.descenteGauss().toString());
    
-    
+  /* n.transvection(2,1);
+   
+   System.out.println(n.toString());
+   n.transvection(2,0);
+   System.out.println(n.toString());
+   n.transvection(1,0);
+   System.out.println(n.toString());
+   
+       */
+ // n.remonteeGauss();
+System.out.println(n.resolution().toString());
+  
 }
 }

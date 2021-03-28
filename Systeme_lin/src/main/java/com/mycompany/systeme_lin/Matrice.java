@@ -358,7 +358,7 @@ public class Matrice {
         
         for (int j =0 ;j<this.nbrLig-1;j++){
         //while (this.lignePlusGrandPivot(j)!=-1){
-        rang++;
+        
         
                 r = r * this.permuteLigne(j, this.lignePlusGrandPivot(j));
                 for (int i = j + 1; i < this.nbrLig; i++) {
@@ -367,6 +367,11 @@ public class Matrice {
                   
                 }
             }
+        for (int i =0;i<this.nbrLig ; i++){
+            if (this.lignePlusGrandPivot(i)!=-1){
+                rang++ ;
+            }
+        }
 
         ResGauss res = new ResGauss(rang, r);
         return res;
@@ -413,6 +418,25 @@ public class Matrice {
                 
             }
         }
+    }
+    public ResSys resolution (){
+        this.descenteGauss();
+        if (this.descenteGauss().rang==this.nbrCol-1){
+            this.remonteeGauss();
+            Matrice sol = new Matrice (this.nbrLig,1);
+            for (int i = 0; i < sol.nbrLig; i++) {
+                sol.coeffs[i][0]=this.coeffs[i][this.nbrCol-1];
+                
+            }
+            
+            ResSys res = new ResSys(sol , true);
+            return res;
+                }
+        else {
+           System.out.println(this.descenteGauss().rang);
+           return null;
+        }
+       
     }
 }
 
